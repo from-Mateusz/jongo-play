@@ -2,7 +2,7 @@ package cz.mateusz.jongo.practice.models;
 
 import java.time.LocalDateTime;
 
-public class Fight {
+public class Fight extends EntityModel {
 
     private Fighter opponent;
 

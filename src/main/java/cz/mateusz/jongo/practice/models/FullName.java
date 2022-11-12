@@ -6,9 +6,15 @@ public class FullName {
 
     private String lastName;
 
-    public FullName(String firstName, String lastName) {
+    private FullName() {}
+
+    private FullName(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public static FullName create(String firstName, String lastName) {
+        return new FullName(firstName, lastName);
     }
 
     public String getFirstName() {
