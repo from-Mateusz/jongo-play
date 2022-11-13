@@ -1,7 +1,8 @@
 package cz.mateusz.jongo.practice.database.collections;
 
-import com.mongodb.DB;
-import cz.mateusz.jongo.practice.database.ConnectedDatabaseWrapper;
+import cz.mateusz.jongo.practice.database.DefaultEntityKeyGenerator;
+import cz.mateusz.jongo.practice.database.EntityKeyManager;
+import cz.mateusz.jongo.practice.database.MongoDatabase;
 import cz.mateusz.jongo.practice.models.Fighter;
 import org.jongo.MongoCursor;
 
@@ -11,12 +12,11 @@ import java.util.Optional;
 
 public class FightersCollection extends JongoCollection<Fighter, Long> {
 
-    public FightersCollection() {
-        super("fighters", ConnectedDatabaseWrapper.unwrap());
-    }
+    private EntityKeyManager entityKeyManager;
 
-    public FightersCollection(String name, DB database) {
-        super(name, database);
+    public FightersCollection(MongoDatabase database) {
+        super(database, "fighters");
+//        this.entityKeyManager = new DefaultEntityKeyGenerator();
     }
 
     @Override
@@ -36,13 +36,11 @@ public class FightersCollection extends JongoCollection<Fighter, Long> {
     @Override
     public Fighter save(Fighter fighter) {
 
-        LastKey nextKey = createNextKey();
+        Long nextKey = (Long) entityKeyManager.generateNextKeyFor(fighter);
 
-        fighter.setId(nextKey.getValue());
+        fighter.setId(nextKey);
 
         collection.insert(fighter);
-
-        keyCollection.save(nextKey);
 
         return fighter;
     }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cz.mateusz.jongo.practice.database.EntityKeyGeneratorTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-13T23:34:16" hostname="DESKTOP-EC1ROMR" time="37.206">
+  <properties/>
+  <testcase name="shouldGenerateNextKeyForTheFighterEntity()" classname="cz.mateusz.jongo.practice.database.EntityKeyGeneratorTests" time="37.206"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[lis 14, 2022 12:34:16 AM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+lis 14, 2022 12:34:16 AM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Opened connection [connectionId{localValue:1, serverValue:32}] to 127.0.0.1:27017
+lis 14, 2022 12:34:16 AM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[6, 0, 1]}, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=2821600}
+lis 14, 2022 12:34:18 AM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Opened connection [connectionId{localValue:2, serverValue:33}] to 127.0.0.1:27017
+]]></system-err>
+</testsuite>

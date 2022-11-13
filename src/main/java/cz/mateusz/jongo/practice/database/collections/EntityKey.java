@@ -2,22 +2,22 @@ package cz.mateusz.jongo.practice.database.collections;
 
 import org.jongo.marshall.jackson.oid.MongoId;
 
-public class LastKey {
+public class EntityKey<T> {
 
     @MongoId
     private String collection;
 
-    private Long value;
+    private T value;
 
-    public LastKey() {}
+    public EntityKey() {}
 
-    private LastKey(String collection, Long value) {
+    private EntityKey(String collection, T value) {
         this.collection = collection;
         this.value = value;
     }
 
-    public static LastKey create(String collection, Long value) {
-        return new LastKey(collection, value);
+    public static <T> EntityKey create(String collection, T value) {
+        return new EntityKey(collection, value);
     }
 
     public String getCollection() {
@@ -28,15 +28,15 @@ public class LastKey {
         this.collection = collection;
     }
 
-    public Long getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(Long value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public LastKey increment(Long value) {
-        return new LastKey(collection, value);
+    public EntityKey increment(Long value) {
+        return new EntityKey(collection, value);
     }
 }

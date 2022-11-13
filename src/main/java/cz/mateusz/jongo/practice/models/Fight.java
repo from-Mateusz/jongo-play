@@ -1,8 +1,10 @@
 package cz.mateusz.jongo.practice.models;
 
+import cz.mateusz.jongo.practice.database.EntityModel;
+
 import java.time.LocalDateTime;
 
-public class Fight extends EntityModel {
+public class Fight extends EntityModel<Long> {
 
     private Fighter opponent;
 

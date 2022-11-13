@@ -7,6 +7,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 public class FightersServiceTests {
 
@@ -17,5 +19,7 @@ public class FightersServiceTests {
     private MainFightersService fightersService;
 
     @Test
-    public void shouldRegisterFighter() {}
+    public void shouldRegisterFighter() {
+
+    }
 }

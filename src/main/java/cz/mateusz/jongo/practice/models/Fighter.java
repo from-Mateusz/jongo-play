@@ -1,8 +1,14 @@
 package cz.mateusz.jongo.practice.models;
 
+import cz.mateusz.jongo.practice.database.EntityModel;
+import cz.mateusz.jongo.practice.database.annotations.MongoDocument;
+import cz.mateusz.jongo.practice.database.annotations.MongoDocumentEntityIdType;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@MongoDocument(idType = MongoDocumentEntityIdType.LONG,
+                collectionName = "fighters")
 public class Fighter extends EntityModel {
 
     private FullName name;

@@ -1,19 +1,19 @@
-package cz.mateusz.jongo.practice.models;
+package cz.mateusz.jongo.practice.database;
 
 import org.jongo.marshall.jackson.oid.MongoId;
 
 import java.util.Objects;
 
-public abstract class EntityModel {
+public abstract class EntityModel<I> {
 
     @MongoId
-    private Long id;
+    private I id;
 
-    public Long getId() {
+    public I getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(I id) {
         this.id = id;
     }
 

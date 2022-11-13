@@ -1,9 +1,10 @@
 package cz.mateusz.jongo.practice.database;
 
-import cz.mateusz.jongo.practice.database.collections.LastKey;
+import cz.mateusz.jongo.practice.database.collections.JongoCollection;
+import cz.mateusz.jongo.practice.database.collections.EntityKey;
 
 import java.util.Optional;
 
 public interface LastKeySelector {
-    Optional<LastKey> selectNextKey(String collection);
+    Optional<EntityKey> selectNextKey(JongoCollection collection);
 }

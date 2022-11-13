@@ -1,7 +1,6 @@
 package cz.mateusz.jongo.practice.database.collections;
 
-import com.mongodb.DB;
-import cz.mateusz.jongo.practice.database.ConnectedDatabaseWrapper;
+import cz.mateusz.jongo.practice.database.MongoDatabase;
 import cz.mateusz.jongo.practice.models.Fight;
 import org.jongo.MongoCursor;
 
@@ -10,12 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class FightsCollection extends JongoCollection<Fight, Long> {
-    public FightsCollection() {
-        super("fights", ConnectedDatabaseWrapper.unwrap());
-    }
 
-    public FightsCollection(String name, DB database) {
-        super(name, database);
+    public FightsCollection(MongoDatabase database) {
+        super(database, "fights");
     }
 
     @Override
@@ -34,16 +30,7 @@ public class FightsCollection extends JongoCollection<Fight, Long> {
 
     @Override
     public Fight save(Fight fight) {
-
-        LastKey nextKey = createNextKey();
-
-        fight.setId(nextKey.getValue());
-
-        collection.insert(fight);
-
-        keyCollection.save(nextKey);
-
-        return fight;
+        return null;
     }
 
     @Override

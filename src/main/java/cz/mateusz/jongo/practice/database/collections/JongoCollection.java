@@ -1,40 +1,20 @@
 package cz.mateusz.jongo.practice.database.collections;
 
-import com.mongodb.DB;
-import org.jongo.Jongo;
+import cz.mateusz.jongo.practice.database.MongoDatabase;
 import org.jongo.MongoCollection;
-
-import java.util.Optional;
 
 public abstract class JongoCollection<T, ID> implements Collection<T, ID> {
 
-    private String collectionName;
+    private String name;
 
     protected MongoCollection collection;
 
-    protected LastKeyCollection keyCollection;
-
-    protected JongoCollection(String collectionName, DB database) {
-        this.collectionName = collectionName;
-        this.collection = new Jongo(database).getCollection(collectionName);
+    protected JongoCollection(MongoDatabase database, String name) {
+        this.name = name;
+        this.collection = database.getCollection(name);
     }
 
-    public String getCollectionName() {
-        return collectionName;
-    }
-
-    protected final LastKey createNextKey() {
-        Optional<LastKey> possibleCurrentKey = keyCollection.findById(getCollectionName());
-
-        LastKey nextKey = null;
-
-        if(possibleCurrentKey.isPresent()) {
-            LastKey currentKey = possibleCurrentKey.get();
-            nextKey = currentKey.increment(10L);
-        }
-
-        if(nextKey == null) nextKey = LastKey.create(getCollectionName(), 10L);
-
-        return nextKey;
+    public String getName() {
+        return name;
     }
 }
